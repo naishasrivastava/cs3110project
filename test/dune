@@ -1,4 +1,4 @@
-(test
+(tests
  (names audio_test fft_test analysis_test pipeline_test
  (libraries ounit2 cs3110project))
  (libraries audiovis unix)
