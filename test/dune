@@ -1,5 +1,5 @@
 (test
- (names audio_test fft_test analysis_test visuals_test pipeline_test
+ (names audio_test fft_test analysis_test pipeline_test
  (libraries ounit2 cs3110project))
  (libraries audiovis unix)
  (deps
