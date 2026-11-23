@@ -2,7 +2,7 @@
 type band_levels = {
   bass: float; (** Low frequency level *)
   mid: float; (** Mid frequency level *)
-  trebel: float; (** High frequency level *)
+  treble: float; (** High frequency level *)
 }
 
 (** [frequency_of_bin ~sample_rate ~fft_size bin] is the frequency in
