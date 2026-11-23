@@ -3,6 +3,7 @@ let failures = ref 0
 let check name cond =
   if cond then Printf.printf "PASS %s\n" name
   else (Printf.printf "FAIL %s\n" name; incr failures)
+let skip name reason = Printf.printf "SKIP %s: %s\n" name reason
 let close a b = abs_float (a -. b) < 1e-4
 
 (* A WAV built in memory, with an odd-sized junk chunk before the data (tests chunk padding). *)
@@ -69,10 +70,10 @@ let () =
    | Error e -> check ("load mono WAV: " ^ Audio.error_to_string e) false);
   (match Audio.load "../samples/sine440.mp3" with
    | Ok a -> check "MP3 via ffmpeg: 44100 Hz, about 3 s" (a.Audio.sample_rate = 44100 && abs_float (Audio.duration a -. 3.0) < 0.2)
-   | Error Audio.Ffmpeg_not_found -> Check.skip "MP3 via ffmpeg" "ffmpeg is not installed"
+   | Error Audio.Ffmpeg_not_found -> skip "MP3 via ffmpeg" "ffmpeg is not installed"
    | Error e -> check ("load MP3: " ^ Audio.error_to_string e) false);
   (match Audio.load "../samples/bass_then_treble.mp3" with
    | Ok a -> check "second MP3: about 2 s, samples in range" (abs_float (Audio.duration a -. 2.0) < 0.2 && Array.for_all (fun x -> abs_float x <= 1.0) a.Audio.samples)
-   | Error Audio.Ffmpeg_not_found -> Check.skip "second MP3" "ffmpeg is not installed"
+   | Error Audio.Ffmpeg_not_found -> skip "second MP3" "ffmpeg is not installed"
    | Error e -> check ("load second MP3: " ^ Audio.error_to_string e) false);
   exit (if !failures = 0 then 0 else 1)
