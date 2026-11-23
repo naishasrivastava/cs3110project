@@ -1,4 +1,4 @@
-(  Loads a WAV or MP3, runs it through Fft and Analysis (via Track), prints a table of the frames, and can save every
+(* Loads a WAV or MP3, runs it through Fft and Analysis (via Track), prints a table of the frames, and can save every
    frame as CSV.
 
      main.exe FILE [--every SECONDS] [--csv OUT.csv]            *)
