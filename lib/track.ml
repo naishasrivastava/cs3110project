@@ -1,4 +1,4 @@
-let window_size = 1024
+let window_size = Analysis.window_size
 
 let raw (a : Audio.t) =
   let count = Audio.num_windows a ~size:window_size in
