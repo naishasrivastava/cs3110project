@@ -1,0 +1,3 @@
+(executable
+ (name main)
+ (libraries cs3110project unix))
