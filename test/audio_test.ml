@@ -3,8 +3,8 @@ let failures = ref 0
 let check name cond =
   if cond then Printf.printf "PASS %s\n" name
   else (Printf.printf "FAIL %s\n" name; incr failures)
-let skip name reason = Printf.printf "SKIP %s: %s\n" name reason
 let close a b = abs_float (a -. b) < 1e-4
+let skip name why = Printf.printf "SKIP %s (%s)\n" name why
 
 (* A WAV built in memory, with an odd-sized junk chunk before the data (tests chunk padding). *)
 let wav ~channels ~rate ~bits ~tag data =
