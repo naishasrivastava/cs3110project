@@ -28,7 +28,6 @@ For MP3 input, install `ffmpeg` using your system's package manager. For example
 brew install ffmpeg
 ```
 
-Python and NumPy are not required to build, test, or run the project.
 
 ## Build, Test, Run
 
