@@ -10,6 +10,10 @@ type shape =
 val clamp01 : float -> float
 (** [clamp01 x] is [x] limited to [0., 1.]; NaN becomes [0.]. *)
 
+val levels_of_frames : Analysis.frame array -> Analysis.band_levels array
+(** Drop the timestamps from [Track]'s frames, giving what {!level_at} and
+    {!run} take. *)
+    
 val level_at :
   Analysis.band_levels array -> seconds_per_frame:float -> float -> Analysis.band_levels
 (** [level_at frames ~seconds_per_frame t] is the frame playing at time [t].

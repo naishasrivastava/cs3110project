@@ -9,6 +9,16 @@ type shape =
 let clamp01 x =
   if Float.is_nan x then 0. else if x < 0. then 0. else if x > 1. then 1. else x
 
+let levels_of_frames frames =
+  Array.map
+    (fun (f : Analysis.frame) : Analysis.band_levels ->
+      {
+        Analysis.bass = f.Analysis.bass;
+        mid = f.Analysis.mid;
+        treble = f.Analysis.treble;
+      })
+    frames
+    
 let level_at frames ~seconds_per_frame t =
   let n = Array.length frames in
   if n = 0 then invalid_arg "Visuals.level_at: no frames"
