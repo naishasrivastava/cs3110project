@@ -10,23 +10,36 @@ Takes a song (MP3 or WAV), cuts it into short windows, takes the Fourier transfo
 Audio loading, frequency analysis, and the command-line program are implemented. The visualization module (`lib/visuals.ml`) is currently empty; the program produces data for a future visualization.
 
 ## Requirements
-
+ 
 - OCaml 4.14 or newer and Dune 3.0 or newer. The application uses the compiler's bundled `unix` library.
 - OUnit2 for the tests.
+- Raylib (the OCaml `raylib` package) for `lib/visuals.ml`. The library will not build without it.
 - `ffmpeg` on the PATH for MP3 input. The loader also accepts M4A, AAC, FLAC, and OGG through `ffmpeg`. Supported WAV files load directly without it, and MP3 tests print `SKIP` when it is unavailable.
-
-With OCaml installed and an opam switch using OCaml 4.14 or newer selected, install the build and test dependencies:
-
+With OCaml installed and an opam switch using OCaml 4.14 or newer selected, install the build, test, and graphics dependencies:
+ 
 ```sh
-opam install dune ounit2
+opam install dune ounit2 raylib
 eval $(opam env)
 ```
-
+ 
+If `opam install raylib` fails, you may be missing a system graphics library. On Linux, install your distribution's OpenGL and X11 development packages first (for example `libgl1-mesa-dev` and `libx11-dev` on Ubuntu or Debian). On macOS and Windows the OCaml `raylib` package bundles what it needs, but on Windows it is easiest to build inside WSL.
+ 
+Make sure `raylib` is listed in the `libraries` field of `lib/dune`:
+ 
+```text
+(library
+ (name cs3110project)
+ (wrapped false)
+ (libraries unix raylib))
+```
+ 
 For MP3 input, install `ffmpeg` using your system's package manager. For example, on macOS with Homebrew:
-
+ 
 ```sh
 brew install ffmpeg
 ```
+ 
+On Windows, use `winget install ffmpeg` or download it from https://ffmpeg.org and add it to the PATH.
 
 
 ## Build, Test, Run
@@ -88,3 +101,9 @@ Audio channels are averaged into mono. Analysis uses consecutive, non-overlappin
 - `bin/`: the command-line entry point, `main.ml`.
 - `test/`: the audio, FFT, and analysis tests configured in `test/dune`.
 - `samples/`: WAV and MP3 fixtures used by tests and example commands.
+
+## Troubleshooting
+ 
+- `Unbound module Raylib`: install the package with `opam install raylib`, run `eval $(opam env)`, and add `raylib` to the `libraries` field in `lib/dune`.
+- `Unbound module OUnit2`: run `opam install ounit2`.
+- `git` or `ffmpeg` not recognized on Windows: reopen the terminal (or VS Code) after installing so the PATH refreshes.
