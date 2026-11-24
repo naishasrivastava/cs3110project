@@ -1,5 +1,5 @@
 (tests
- (names audio_test fft_test analysis_test)
+ (names audio_test fft_test analysis_test pipeline_test visuals_test)
  (libraries ounit2 cs3110project unix)
  (deps
   (source_tree ../samples)))
