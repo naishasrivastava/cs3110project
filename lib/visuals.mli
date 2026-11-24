@@ -21,5 +21,5 @@ val shapes_of_levels : settings -> Analysis.band_levels -> shape list
 
 val run :
   settings -> Analysis.band_levels array -> seconds_per_frame:float -> unit
-(** Opens a window and animates [frames] until it is closed. Loops when the
+(** Opens a window and animates [frames] until it is closed.  Loops when the
     frames run out. *)

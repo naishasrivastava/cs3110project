@@ -6,13 +6,6 @@ type shape =
   | Circle of { x : float; y : float; r : float; color : int * int * int }
   | Rect of { x : float; y : float; w : float; h : float; color : int * int * int }
 
-
-(*REMOVE LATER*)
-(*let fake_frames =
-  Array.init 200 (fun i ->
-      let t = float_of_int i *. 0.05 in
-      { Analysis.bass = 0.5 +. (0.5 *. sin (t *. 3.)); mid = 0.3; treble = 0.2 })*)
-
 let clamp01 x =
   if Float.is_nan x then 0. else if x < 0. then 0. else if x > 1. then 1. else x
 
