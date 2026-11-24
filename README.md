@@ -12,7 +12,7 @@ Takes a song (MP3 or WAV), cuts it into short windows, takes the Fourier transfo
 - `ffmpeg` on the PATH for MP3 input. WAV files and `dune test` do not need it (MP3 tests print `SKIP` without it).  
 - Python 3 + numpy only for `scripts/reference.py` (independent check of expected values).  
 
-## Build, Rest, Run
+## Build, Test, Run
 ```
 dune build
 dune test --force                 # prints PASS / FAIL / SKIP lines; non-zero exit on any FAIL  
