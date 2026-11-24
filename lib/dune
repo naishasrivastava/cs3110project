@@ -1,4 +1,4 @@
 (library
  (name cs3110project)
  (wrapped false)
- (libraries unix))
+ (libraries unix raylib))
