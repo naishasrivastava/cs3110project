@@ -7,7 +7,7 @@ Suhana Kumar - sk3487
 
 Takes a song (MP3 or WAV), cuts it into short windows, takes the Fourier transform of each, and measures how much bass, mid and treble each window has. The command-line program prints the results as a table and can export them as CSV.
 
-Audio loading, frequency analysis, and the command-line program are implemented. The visualization module (`lib/visuals.ml`) is currently empty; the program produces data for a future visualization.
+Audio loading, frequency analysis, the full pipeline (Track), the command-line program, and a first Raylib visualization are implemented. Theme and style options are declared in Visuals but not all are used yet.
 
 ## Requirements
  

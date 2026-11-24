@@ -1,7 +1,6 @@
 (* End-to-end tests: audio bytes or files (WAV and MP3) -> Audio -> Fft -> Analysis -> Track.
    They check that the components agree with each other. Expected answers come from how the test audio was built
-   (a tone's frequency, a song that switches pitch at 1 s), not from the code under test; scripts/reference.py
-   (a separate NumPy version of the same pipeline) was used to double-check them. *)
+   (a tone's frequency, a song that switches pitch at 1 s), not from the code under test *)
 let failures = ref 0
 
 let check name cond =
